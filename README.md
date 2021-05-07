@@ -1,2 +1,4 @@
 # calculator
-Calculator API using my faviourite microframework - Slim 4
+
+Calculator API using my favourite microframework - Slim 4
+
