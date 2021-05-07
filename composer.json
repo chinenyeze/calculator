@@ -1,0 +1,42 @@
+{
+    "name": "company/calculator",
+    "type": "web",
+    "description": "The Company calculator backend service.",
+    "keywords": [
+        "company",
+        "api"
+    ],
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "version": "v0.0.1",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dr Samuel Chinenyeze",
+            "email": "samuel.chinenyeze@company.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Company\\Calculator\\": "src",
+            "Tests\\Unit\\": "tests/unit"
+        }
+    },
+    "config": {
+        "vendor-dir": "vendor",
+        "bin-dir": "bin",
+        "platform": {
+            "php": "8.0"
+        },
+        "sort-packages": true
+    },
+    "require": {
+        "php": "8.0",
+        "slim/slim": "^4.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "roave/security-advisories": "dev-latest",
+        "squizlabs/php_codesniffer": "4.0.x-dev"
+    }
+}
