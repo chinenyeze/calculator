@@ -15,17 +15,17 @@ class Calculator implements JsonSerializable
 
     /**
      * Calculator constructor.
-     * @param float $left left operand
-     * @param float $right right operand
+     * @param float $left operand
+     * @param float $right operand
      * @param string $operator
-     * @param float $result
+     * @param float|null $result
      * @throws InvalidOperatorException
      */
     public function __construct(
         public float $left,
         public float $right,
         public string $operator,
-        public float $result,
+        public ?float $result,
     ) {
         if (!in_array($this->operator, self::$operators, true)) {
             throw new InvalidOperatorException($this->operator);
@@ -43,7 +43,7 @@ class Calculator implements JsonSerializable
             $data['left'],
             $data['right'],
             $data['operator'],
-            $data['result']
+            $data['result'] ?? null
         );
     }
 
