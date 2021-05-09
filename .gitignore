@@ -1,5 +1,6 @@
-vendor
-bin
 .idea
+bin
 tests/unit/.phpunit.result.cache
 tests/unit/logfile.txt
+tests-report
+vendor
