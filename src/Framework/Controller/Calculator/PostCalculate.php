@@ -34,11 +34,16 @@ class PostCalculate
             $data    = $this->validator->validate($request);
             $payload = $this->calculatorService->calculate($data);
             $status  = 202;
-        } catch (Exception $e) {
+        } catch (InvalidOperatorException | ValidationException $e) {
             $payload = [
                 'error' => $e->getMessage(),
             ];
             $status  = 400;
+        } catch (Exception) {
+            $payload = [
+                'error' => 'Internal Server Error',
+            ];
+            $status  = 500;
         }
 
         return $response->withJson($payload, $status);
