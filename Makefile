@@ -15,3 +15,6 @@ lint: ## Run lint test
 
 cbf: ## Run cbf
 	@bin/phpcbf --standard=PSR2 --ignore=tests -np src/
+
+test: ## Run unit test
+	@XDEBUG_MODE=coverage bin/phpunit --configuration tests/unit/phpunit.xml --coverage-html tests-report
