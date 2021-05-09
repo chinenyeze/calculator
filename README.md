@@ -33,6 +33,12 @@ make lint
 make cbf
 ```
 
+### Unit Tests
+
+```
+make test
+```
+
 ### Todo
 
 * Add Error logging and handler
