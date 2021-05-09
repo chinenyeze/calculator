@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         bootstrap="../../vendor/autoload.php">
+
+    <testsuites>
+        <testsuite name="calculator">
+            <directory>Application</directory>
+            <directory>Domain</directory>
+            <directory>Framework</directory>
+        </testsuite>
+    </testsuites>
+
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory>../../src/</directory>
+        </include>
+        <exclude>
+            <file>../../src/init.php</file>
+            <directory>../../src/Framework/ServiceProvider</directory>
+        </exclude>
+    </coverage>
+
+    <logging>
+        <text outputFile="logfile.txt"/>
+    </logging>
+</phpunit>
