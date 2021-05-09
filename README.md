@@ -22,6 +22,10 @@ To run the service with PHP Built-in web server:
 make run
 ```
 
+### API docs
+
+To see the endpoints supported by this API check the docs at `docs/postman/Calculator.postman_collection.json`
+
 ### Code Linting
 
 ```
