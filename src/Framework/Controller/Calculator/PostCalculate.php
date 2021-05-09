@@ -5,8 +5,10 @@ namespace Company\Calculator\Framework\Controller\Calculator;
 use Company\Calculator\Application\CalculatorService;
 use Company\Calculator\Domain\Exception\InvalidOperatorException;
 use Company\Calculator\Framework\Validator\ValidatorInterface;
+use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Respect\Validation\Exceptions\ValidationException;
 
 class PostCalculate
 {
@@ -21,16 +23,24 @@ class PostCalculate
     ) {
     }
 
+    /**
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @return ResponseInterface
+     */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $data       = $this->validator->validate($request);
         try {
+            $data    = $this->validator->validate($request);
             $payload = $this->calculatorService->calculate($data);
-        } catch (InvalidOperatorException $e) {
+            $status  = 202;
+        } catch (Exception $e) {
             $payload = [
-                'message' => 'In'
+                'error' => $e->getMessage(),
             ];
+            $status  = 400;
         }
-        return $response->withJson($payload, 202);
+
+        return $response->withJson($payload, $status);
     }
 }
