@@ -2,6 +2,7 @@
 
 namespace Company\Calculator\Framework\Validator\Calculator;
 
+use Company\Calculator\Domain\Calculator;
 use Company\Calculator\Framework\Validator\ValidatorInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Respect\Validation\Exceptions\ValidationException;
@@ -21,7 +22,7 @@ class PostCalculateValidator implements ValidatorInterface
         v::arrayType()
             ->key('left', v::numericVal())
             ->key('right', v::numericVal())
-            ->key('operator', v::stringVal())
+            ->key('operator', v::in(Calculator::$operators))
             ->setName('payload')
             ->check($params);
 

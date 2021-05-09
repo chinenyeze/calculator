@@ -2,7 +2,6 @@
 
 namespace Company\Calculator\Domain;
 
-use Company\Calculator\Domain\Exception\InvalidOperatorException;
 use JsonSerializable;
 
 class Calculator implements JsonSerializable
@@ -11,7 +10,7 @@ class Calculator implements JsonSerializable
      * Supported operators
      * @var array
      */
-    private static array $operators = ['+', '-', '/', '*'];
+    public static array $operators = ['+', '-', '/', '*'];
 
     /**
      * Calculator constructor.
@@ -19,7 +18,6 @@ class Calculator implements JsonSerializable
      * @param float $right operand
      * @param string $operator
      * @param float|null $result
-     * @throws InvalidOperatorException
      */
     public function __construct(
         public float $left,
@@ -27,15 +25,11 @@ class Calculator implements JsonSerializable
         public string $operator,
         public ?float $result,
     ) {
-        if (!in_array($this->operator, self::$operators, true)) {
-            throw new InvalidOperatorException($this->operator);
-        }
     }
 
     /**
      * @param array $data
      * @return static
-     * @throws InvalidOperatorException
      */
     public static function build(array $data): self
     {

@@ -1,3 +1,5 @@
 vendor
 bin
 .idea
+tests/unit/.phpunit.result.cache
+tests/unit/logfile.txt
