@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "369eee5a-e0a4-4ebb-ada4-72dfff1c874c",
+		"name": "Calculator",
+		"description": "My Calculator API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post Calculate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"left\": 2,\n    \"right\": 5,\n    \"operator\": \"*\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/calculate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"calculate"
+					]
+				},
+				"description": "Send a left and right operand and an operator and get a result of the calculation.\n\nReturns 200 on successful calculation.\n\nReturns 400 for errors."
+			},
+			"response": []
+		}
+	]
+}
