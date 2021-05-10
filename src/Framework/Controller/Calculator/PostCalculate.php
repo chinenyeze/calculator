@@ -4,6 +4,7 @@ namespace Company\Calculator\Framework\Controller\Calculator;
 
 use Company\Calculator\Application\CalculatorService;
 use Company\Calculator\Domain\Exception\InvalidOperatorException;
+use Company\Calculator\Domain\Exception\ZeroDivisionException;
 use Company\Calculator\Framework\Validator\ValidatorInterface;
 use Exception;
 use Psr\Http\Message\ResponseInterface;
@@ -34,7 +35,7 @@ class PostCalculate
             $data    = $this->validator->validate($request);
             $payload = $this->calculatorService->calculate($data);
             $status  = 202;
-        } catch (InvalidOperatorException | ValidationException $e) {
+        } catch (InvalidOperatorException | ZeroDivisionException | ValidationException $e) {
             $payload = [
                 'error' => $e->getMessage(),
             ];

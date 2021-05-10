@@ -1,0 +1,69 @@
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<div class="col-sm-6 col-sm-offset-3">
+    <h1>Company Calculator</h1>
+    <p>Hello {{ name }}! Enter values for calculation:</p>
+
+    <form class="row" action="" method="post">
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="left">Left</label>
+                <input type="text" class="form-control" id="left">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="operator">Operator</label>
+                <input type="text" class="form-control" id="operator">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="right">Right</label>
+                <input type="text" class="form-control" id="right">
+            </div>
+        </div>
+
+        <div class="text-right" style="margin-right: 20px">
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+    </form>
+
+    <div id="success" class="alert alert-success" role="alert" style="display: none">
+    </div>
+    <div id="error" class="alert alert-danger" role="alert" style="display: none">
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $("form").submit(function (event) {
+            var formData = {
+                left: $("#left").val(),
+                right: $("#right").val(),
+                operator: $("#operator").val(),
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8000/calculate",
+                data: formData,
+                dataType: "json",
+                encode: true,
+            }).done(function (data) {
+                console.log('done')
+                let result = data['result'];
+                $("#error").css("display", "none")
+                $("#success").css("display", "block").text('The result is ' + result)
+            }).fail(function (data) {
+                console.log('fail')
+                let error = data.responseJSON['error']
+                $("#success").css("display", "none")
+                $("#error").css("display", "block").text(error)
+            });
+
+            event.preventDefault();
+        });
+    });
+</script>
