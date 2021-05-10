@@ -3,6 +3,7 @@
 namespace Company\Calculator\Framework\ServiceProvider;
 
 use Company\Calculator\Framework\Controller\Calculator\PostCalculate;
+use Company\Calculator\Framework\ViewHandler\Calculator\CalculateView;
 use Slim\App;
 
 class RouteServiceProvider
@@ -12,6 +13,7 @@ class RouteServiceProvider
      */
     public function registerRoutes(App $app): void
     {
+        $app->get('/', CalculateView::class);
         $app->post('/calculate', PostCalculate::class);
     }
 }
