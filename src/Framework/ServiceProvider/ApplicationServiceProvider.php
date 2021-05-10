@@ -8,6 +8,7 @@ use DI\Container;
 class ApplicationServiceProvider implements ServiceProviderInterface
 {
     /**
+     * Load services
      * @param Container $container
      */
     public function register(Container $container): void
