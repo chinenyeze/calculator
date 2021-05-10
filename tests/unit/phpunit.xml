@@ -24,6 +24,7 @@
         <exclude>
             <file>../../src/init.php</file>
             <directory>../../src/Framework/ServiceProvider</directory>
+            <directory>../../src/Framework/ViewHandler</directory>
         </exclude>
     </coverage>
 
