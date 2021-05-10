@@ -8,7 +8,7 @@ setup: ## Set up the service
 	@composer install
 
 run: ## Run the service
-	@php -S localhost:8000 bootstrap.php
+	@php -S localhost:8000
 
 lint: ## Run lint test
 	@bin/phpcs --standard=PSR2 --ignore=tests -np src/
